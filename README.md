@@ -27,6 +27,7 @@ biobased/
 │   ├── Training_TgT.py           # Train Tg meta-model
 │   ├── Training_Ws.py            # Train water solubility model
 │   ├── Ext_Analysis.py           # Analyze molecular descriptors
+│   ├── Ext_ArcTune.py            # Hyperparameter tuning tool
 │   └── Files/                    # Trained model files
 │       ├── Trained_Kp1.pt
 │       ├── Trained_Rr1.pt
@@ -58,22 +59,22 @@ biobased/
 - **Used by:** All other training scripts
 
 **`Training_Kp.py`** - Train propagation rate model
-- **Uses:** `Dataset_Kp.xlsx`
+- **Uses:** `Dataset_Kp.xlsx` (see [Dataset Sources](#dataset-sources))
 - **Creates:** `Trained_Kp1.pt` in `Train/Files/`
 - **Output:** Model that predicts how fast polymerization happens
 
 **`Training_Rr.py`** - Train reactivity ratios model
-- **Uses:** `Dataset_Rr.xlsx`
+- **Uses:** `Dataset_Rr.xlsx` (see [Dataset Sources](#dataset-sources))
 - **Creates:** `Trained_Rr1.pt` in `Train/Files/`
 - **Output:** Model that predicts reactivity ratios for monomer pairs
 
 **`Training_Tg1.py`** - Train glass transition temperature (neural network)
-- **Uses:** `Dataset_Tg.xlsx` (from Data folder, not included in repo)
+- **Uses:** `Dataset_Tg.xlsx` (see [Dataset Sources](#dataset-sources))
 - **Creates:** `Trained_Tg1.pt` in `Train/Files/`
 - **Output:** First Tg prediction model (ANN approach)
 
 **`Training_Tg2.py`** - Train glass transition temperature (gradient boosting)
-- **Uses:** `Dataset_Tg.xlsx`
+- **Uses:** `Dataset_Tg.xlsx` (see [Dataset Sources](#dataset-sources))
 - **Creates:** `Trained_Tg2_ctb.joblib` in `Train/Files/`
 - **Output:** Second Tg prediction model (CatBoost approach)
 
@@ -83,7 +84,7 @@ biobased/
 - **Output:** Final Tg model that combines the two previous models for better accuracy
 
 **`Training_Ws.py`** - Train water solubility model
-- **Uses:** `Dataset_Ws.xlsx`
+- **Uses:** `Dataset_Ws.xlsx` (see [Dataset Sources](#dataset-sources))
 - **Creates:** `Trained_Ws2_ctb.joblib` in `Train/Files/`
 - **Output:** Model that predicts water solubility of monomers
 
@@ -92,6 +93,13 @@ biobased/
 - **Uses:** Any dataset file you provide
 - **Creates:** Correlation heatmaps and descriptor rankings in `Analyze/` folder
 - **Purpose:** Used during model development to select best descriptors
+
+**`Ext_ArcTune.py`** - Hyperparameter tuning tool
+- **What it does:** Automatically finds the best model settings (architecture and hyperparameters)
+- **Uses:** Dataset files and uses Optuna for optimization
+- **Creates:** Top trial results in `Tuned/` folder with JSON files and visualization plots
+- **Purpose:** Used before training to optimize model performance
+- **Features:** Interactive mode for customizing parameter ranges, supports both neural networks and gradient boosting models
 
 ### Trained Models
 
@@ -109,7 +117,7 @@ The `Train/Files/` folder contains six trained models:
 
 1. **Install required packages:**
 ```bash
-pip install torch pandas numpy rdkit scikit-learn catboost joblib openpyxl
+pip install torch pandas numpy rdkit scikit-learn catboost joblib openpyxl optuna
 ```
 
 2. **Run the selector:**
@@ -150,13 +158,19 @@ Edit `Candidates_inLab.xlsx` to add or remove candidate monomers. You need:
 - CatBoost
 - joblib
 - openpyxl
+- optuna (for hyperparameter tuning)
 
 ## Training Your Own Models
 
 If you want to retrain models with your own data:
 
-1. Place your datasets in a `Data/` folder
-2. Run the training scripts in order:
+1. Prepare your datasets (see [Dataset Sources](#dataset-sources) for format examples)
+2. Place your datasets in a `Data/` folder
+3. (Optional) Run `Ext_ArcTune.py` to optimize model architecture:
+```bash
+python Train/Ext_ArcTune.py --interactive
+```
+4. Run the training scripts in order:
    - `Training_Kp.py`
    - `Training_Rr.py`
    - `Training_Tg1.py`
@@ -166,6 +180,14 @@ If you want to retrain models with your own data:
 
 Each script will save the trained model in `Train/Files/`.
 
+## Dataset Sources
+
+The datasets used to train these models are available from the following sources:
+
+- **Reactivity Ratios (Rr):** [ReactivityRatios Database](https://github.com/TheJacksonLab/ReactivityRatios)
+- **Propagation Rate Constant (Kp):** [Kp-predict Database](https://github.com/jamesymwang/Kp-predict_MACCS-and-Molecular-Transformer)
+- **Glass Transition Temperature (Tg):** [PolyMetriX Database](https://github.com/lamalab-org/PolyMetriX/)
+- **Water Solubility (Ws):** [Figshare Dataset](https://doi.org/10.6084/m9.figshare.14552697)
 
 ## Citation
 
@@ -178,5 +200,3 @@ If you use this code in your research, please cite:
 ## License
 This repository is licensed under CC BY-NC 4.0.
 For more information please refer to the [license section](https://github.com/PolymatGIQ/biobased/blob/main/License.md).
-
-
