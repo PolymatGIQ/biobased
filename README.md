@@ -176,9 +176,7 @@ If you use this code in your research, please cite:
 ```
 
 ## License
+This repository is licensed under CC BY-NC 4.0.
+For more information please refer to the [license section](https://github.com/PolymatGIQ/biobased/blob/main/License.md).
 
-[Your license information]
 
-## Contact
-
-For questions or issues, please open an issue on GitHub or contact [your contact information].
