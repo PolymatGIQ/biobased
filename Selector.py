@@ -56,9 +56,9 @@ class ModelManager:
             'Kp': {'model_class': config.ANN_Kp, 'file': 'Trained_Kp1.pt', 'input_dim': config.Full_nbits},
             'Rr': {'model_class': config.ANN_Rr, 'file': 'Trained_Rr1.pt', 'input_dim': 2 * config.Full_nbits},
             'Tg_ANN': {'model_class': config.ANN_Tg, 'file': 'Trained_Tg1.pt', 'input_dim': config.Full_nbits},
-            'Tg_CatBoost': {'model_class': config.CATB_Tg, 'file': 'Trained_Tg2_ctb.joblib', 'input_dim': None},
+            'Tg_CatBoost': {'model_class': config.CATB_Tg, 'file': 'Trained_Tg2_ctb_cmprsd.gz', 'input_dim': None},
             'Tg_Meta': {'model_class': config.MetaModelANN, 'file': 'Trained_TgO.pt', 'input_dim': None},
-            'Ws': {'model_class': config.CATB_Ws, 'file': 'Trained_Ws2_ctb.joblib', 'input_dim': None}}
+            'Ws': {'model_class': config.CATB_Ws, 'file': 'Trained_Ws2_ctb_cmprsd.gz', 'input_dim': None},
 
         # Load all models
         self._load_all_models()
@@ -548,3 +548,4 @@ if __name__ == "__main__":
         import traceback
 
         traceback.print_exc()
+
