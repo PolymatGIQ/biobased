@@ -166,7 +166,7 @@ def remove_redundant_descriptors(top_descriptors, property_correlations,
                                  descriptor_corr_matrix, threshold=0.9):
     """
     Remove redundant descriptors based on descriptor-descriptor correlations.
-    Keep the one with higher property correlation.
+    Keep the one with the higher property correlation.
     """
     print(f"\nRemoving redundant descriptors (threshold={threshold})...")
 
@@ -564,3 +564,4 @@ def analyze_dataset():
 
 if __name__ == "__main__":
     analyze_dataset()
+
