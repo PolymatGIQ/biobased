@@ -37,7 +37,7 @@ y = Tg_norm
 if model_type == 'ctb':
     model_func = config.CATB_Tg
     model_name = "CatBoost"
-    filename = 'Trained_Tg2_ctb.joblib'
+    filename = 'Trained_Tg2_ctb_cmprsd.gz'
 elif model_type == 'xgb':
     model_func = config.XGB_Tg
     model_name = "XGBoost"
@@ -101,4 +101,5 @@ plotter.plot(true_Tg_plot, pred_Tg_plot, plot_is_train,
              filename=f'Parity_Tg2_{model_type}.png',
              train_metrics=train_metrics, val_metrics=valid_metrics,
              log_scale=False)
+
 
