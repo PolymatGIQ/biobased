@@ -73,7 +73,7 @@ rng = np.random.RandomState(config.rngch_randstate)  # random number generator w
 train_sample_idx = rng.choice(train_indices, size=n_train, replace=False)
 valid_sample_idx = rng.choice(valid_indices, size=n_val, replace=True)
 
-# Combine sampled indices and create mask for plotting
+# Combine sampled indices and create a mask for plotting
 plot_indices = np.concatenate([train_sample_idx, valid_sample_idx])
 plot_is_train = np.array([True] * n_train + [False] * n_val)
 
@@ -94,3 +94,4 @@ plotter.plot(true_Kp_plot, pred_Kp_plot, plot_is_train,
              filename='Parity_Kp1.png',
              train_metrics=train_metrics, val_metrics=valid_metrics,
              log_scale=True)
+
