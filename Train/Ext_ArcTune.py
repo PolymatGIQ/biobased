@@ -971,7 +971,7 @@ def get_param_config_from_user() -> Tuple[str, Dict[str, Any], int]:
 
     print(f"\nSelected model: {model_name}")
 
-    # 2. Configure number of trials
+    # 2. Configure the number of trials
     while True:
         try:
             n_trials = int(input("\nNumber of optimization trials (10-1000, default 100): ") or "100")
@@ -985,7 +985,7 @@ def get_param_config_from_user() -> Tuple[str, Dict[str, Any], int]:
     # 3. Get default parameters for the selected model
     default_params = MODEL_CONFIGS[model_name]["default_params"]
 
-    # 4. Ask if user wants to modify default parameter ranges
+    # 4. Ask if user wants to modify the default parameter ranges
     custom_params = {}
     modify = input("\nDo you want to modify default parameter ranges? (y/n, default: n): ").lower() == 'y'
 
@@ -1213,3 +1213,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
