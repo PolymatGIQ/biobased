@@ -878,7 +878,7 @@ class GBMTrainer:
         # Save the model
         import joblib
         os.makedirs("./Files", exist_ok=True)
-        joblib.dump(save_dict, f"./Files/{self.filename}")
+        joblib.dump(save_dict, f"./Files/{self.filename}", compress=('gzip', 9))
         self.log("Model has been saved.")
 
         # Store normalization values
@@ -1302,3 +1302,4 @@ class ParityPlotter:
         plt.show()
 
         return fig
+
