@@ -39,7 +39,7 @@ y = Ws_norm
 if model_type == 'ctb':
     model_func = config.CATB_Ws
     model_name = "CatBoost"
-    filename = 'Trained_Ws2_ctb.joblib'
+    filename = 'Trained_Ws2_ctb_cmprsd.gz'
 elif model_type == 'xgb':
     model_func = config.XGB_Ws
     model_name = "XGBoost"
@@ -103,4 +103,5 @@ plotter.plot(true_Ws_plot, pred_Ws_plot, plot_is_train,
              filename=f'Parity_Ws2_{model_type}.png',
              train_metrics=train_metrics, val_metrics=valid_metrics,
              log_scale=True)
+
 
