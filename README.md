@@ -32,9 +32,9 @@ biobased/
 │       ├── Trained_Kp1.pt
 │       ├── Trained_Rr1.pt
 │       ├── Trained_Tg1.pt
-│       ├── Trained_Tg2_ctb.joblib
+│       ├── Trained_Tg2_ctb_cmprsd.gz
 │       ├── Trained_TgO.pt
-│       └── Trained_Ws2_ctb.joblib
+│       └── Trained_Ws2_ctb_cmprsd.gz
 ```
 
 ## File Descriptions
@@ -75,7 +75,7 @@ biobased/
 
 **`Training_Tg2.py`** - Train glass transition temperature (gradient boosting)
 - **Uses:** `Dataset_Tg.xlsx` (see [Dataset Sources](#dataset-sources))
-- **Creates:** `Trained_Tg2_ctb.joblib` in `Train/Files/`
+- **Creates:** `Trained_Tg2_ctb_cmprsd.gz` in `Train/Files/`
 - **Output:** Second Tg prediction model (CatBoost approach)
 
 **`Training_TgT.py`** - Train glass transition temperature (meta-model)
@@ -85,7 +85,7 @@ biobased/
 
 **`Training_Ws.py`** - Train water solubility model
 - **Uses:** `Dataset_Ws.xlsx` (see [Dataset Sources](#dataset-sources))
-- **Creates:** `Trained_Ws2_ctb.joblib` in `Train/Files/`
+- **Creates:** `Trained_Ws2_ctb_cmprsd.gz` in `Train/Files/`
 - **Output:** Model that predicts water solubility of monomers
 
 **`Ext_Analysis.py`** - Analyze molecular descriptors
@@ -107,9 +107,9 @@ The `Train/Files/` folder contains six trained models:
 - `Trained_Kp1.pt` - Propagation rate constant model
 - `Trained_Rr1.pt` - Reactivity ratios model
 - `Trained_Tg1.pt` - Glass transition temperature (neural network)
-- `Trained_Tg2_ctb.joblib` - Glass transition temperature (gradient boosting)
+- `Trained_Tg2_ctb_cmprsd.gz` - Glass transition temperature (gradient boosting)
 - `Trained_TgO.pt` - Glass transition temperature (meta-model)
-- `Trained_Ws2_ctb.joblib` - Water solubility model
+- `Trained_Ws2_ctb_cmprsd.gz` - Water solubility model
 
 ## How to Use
 
