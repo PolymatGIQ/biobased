@@ -193,9 +193,7 @@ The datasets used to train these models are available from the following sources
 
 If you use this code in your research, please cite:
 
-```
-[Citation format to be added after publication]
-```
+Kiarash Farajzadehahary, Nicholas Ballard; Advanced Intelligent Discovery 2026, 2(1), e202500248. https://doi.org/10.1002/aidi.202500248
 
 ## License
 This repository is licensed under CC BY-NC 4.0.
